@@ -1,0 +1,144 @@
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+main {
+  position: absolute;
+}
+
+
+
+main {
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.content-panel {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) minmax(20px, auto) minmax(200px, 300px);
+  grid-template-rows: 3fr repeat(7, minmax(20px, 1fr));
+  gap: 20px 0px;
+  grid-auto-flow: column;
+  perspective: 250px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 0px;
+}
+
+h2 {
+  font-size: 1.1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255, 0.1);
+  text-decoration: none;
+  padding: 5px 10px;
+
+  /* box-shadow: 0px 0px 0px 0.5px #fff inset; */
+  height: 100%;
+  border-radius: 6px;
+  border: 0.5px solid white;
+
+  transition: all 500ms;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+
+  will-change: transform;
+}
+
+.card:hover {
+  transition: all 250ms ease;
+  background: rgb(255, 255, 255, 0.5);
+}
+
+h1.card {
+  background: rgb(255, 255, 255, 0);
+  border: none;
+}
+
+
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.grid > a:nth-child(-n + 8) {
+  transform: rotateY(3deg);
+}
+
+.grid > a:nth-child(n + 9) {
+  transform: rotateY(-3deg);
+}
+
+.grid > a:nth-child(-n + 8) > .card:hover {
+  transition: all 250ms ease;
+  transform: scale(1.04) translateX(10px);
+}
+
+.grid > a:nth-child(n + 9) > .card:hover {
+  transition: all 250ms ease;
+  transform: scale(1.04) translateX(-10px);
+}
+
+#bg-video {
+  /* position: fixed; */
+  /* display: flexbox; */
+  /* margin: auto; */
+  position: absolute;
+  left: 50%; /* % of surrounding element */
+  top: 50%;
+  transform: translate(-50%, -50%); /* % of current element */
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
