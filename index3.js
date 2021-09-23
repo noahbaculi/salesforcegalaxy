@@ -107,8 +107,6 @@ loader.load("data/smoke.png", function (texture) {
   }
 });
 
-console.log("hi", camera.position);
-
 // Stars
 
 function addStar() {
@@ -132,9 +130,6 @@ function addStar() {
   z += camera.position.z;
 
   star.position.set(x, y, z);
-
-  console.log(star.position);
-
   scene.add(star);
   return star;
 }
@@ -170,3 +165,33 @@ function animate() {
 }
 
 animate();
+
+// HTML links hover sound effect
+
+const gridElements = document.getElementsByClassName("grid")[0];
+const links = Array.prototype.slice.call(gridElements.children);
+// console.log(links);
+
+
+links.forEach((link) => {
+  console.log(link.localName)
+  if (link.localName === 'a') {
+    
+    const hoverSound = new Audio("data/spaceboom.wav"); // buffers automatically when created
+    link.addEventListener(
+      "mouseenter",
+      function (event) {
+        console.log("mouseenter");
+        hoverSound.play();
+      },
+      false
+    );
+    // link.addEventListener(
+    //   "mouseleave",
+    //   function (event) {
+    //     // hoverSound.pause();
+    //   },
+    //   false
+    // );
+  }
+});
