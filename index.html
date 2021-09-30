@@ -8,9 +8,7 @@
     <title>Salesforce Galaxy</title>
   </head>
   <body>
-    <video autoplay muted loop id="bg-video">
-      <source src="data/galaxyloop2.mp4" type="video/mp4" />
-    </video>
+    <canvas id="bg"></canvas>
     <main class="content">
       <div class="content-panel">
 
@@ -79,8 +77,5 @@
       </div>
     </main>
     <script type="module" src="/index.js"></script>
-    <script>
-      document.querySelector("video").playbackRate = 0.25;
-    </script>
   </body>
 </html>
