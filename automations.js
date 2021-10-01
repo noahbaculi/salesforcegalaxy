@@ -3,6 +3,7 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls";
 
+// 
 // Setup
 
 const scene = new THREE.Scene();
@@ -27,6 +28,7 @@ renderer.render(scene, camera);
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
+// 
 // Mouse interaction
 
 let lastMouseDownTime = 0;
@@ -118,16 +120,30 @@ function onMouseUp(event) {
 
 window.addEventListener("mouseup", onMouseUp, false);
 
+// 
 // Controls
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxDistance = 400;
 
+// 
 // Background
 
 const backgroundTexture = new THREE.TextureLoader().load("data/grey.jpg");
 scene.background = backgroundTexture;
 
+// 
+// Lights
+
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(ambientLight);
+
+const pointLight1 = new THREE.PointLight(0xffffff); // Point light to add shadows and interest to geometries
+pointLight1.position.set(-250, 70, 300);
+const lightHelper1 = new THREE.PointLightHelper(pointLight1);
+scene.add(pointLight1, lightHelper1);
+
+// 
 // Pages
 
 const boxGeo = new THREE.BoxGeometry(1, 115, 80);
@@ -161,6 +177,7 @@ function creatPageMaterials(frontImage, sfBack = true) {
   ];
 }
 
+// 
 // Page box geometries
 
 const degToRad = 0.0174533; // degrees to radians conversion factor
@@ -212,6 +229,7 @@ box5.rotation.set(0, -50 * degToRad, 0);
 box5.userData = "https://help.salesforce.com/s/articleView?id=sf.flow";
 scene.add(box5);
 
+// 
 // Credit board
 
 const creditBoxGeo = new THREE.BoxGeometry(1, 40, 80);
@@ -227,16 +245,7 @@ scene.add(creditBox);
 
 let allHoverableObjects = [box1, box2, box3, box4, box5, creditBox];
 
-// Lights
-
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(ambientLight);
-
-const pointLight1 = new THREE.PointLight(0xffffff); // Point light to add shadows and interest to geometries
-pointLight1.position.set(-250, 70, 300);
-const lightHelper1 = new THREE.PointLightHelper(pointLight1);
-scene.add(pointLight1, lightHelper1);
-
+// 
 // Stars
 
 function addStar() {
@@ -262,6 +271,7 @@ function addStar() {
 
 const stars = [...Array(3000)].map(() => addStar());
 
+// 
 // Animation Loop
 
 const rotationAxis = new THREE.Vector3(1, 2, -1);
@@ -282,6 +292,7 @@ function animate() {
 
 animate();
 
+// 
 // Rsponsive Window Resizing
 
 window.addEventListener("resize", onWindowResize, false);

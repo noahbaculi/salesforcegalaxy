@@ -4,11 +4,6 @@ canvas {
   left: 0;
 }
 
-#bg {
-  background: url("data/space1.jpg") no-repeat center center;
-  background-size: cover;
-}
-
 main {
   position: absolute;
 }
@@ -130,19 +125,4 @@ h1.card {
 .grid > a:nth-child(n + 9) > .card:hover {
   transition: all 250ms ease;
   transform: scale(1.04) translateX(-10px);
-}
-
-#bg-video {
-  /* position: fixed; */
-  /* display: flexbox; */
-  /* margin: auto; */
-  position: absolute;
-  left: 50%; /* % of surrounding element */
-  top: 50%;
-  transform: translate(-50%, -50%); /* % of current element */
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  overflow: hidden;
 }
