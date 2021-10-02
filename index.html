@@ -8,17 +8,33 @@
     <title>Salesforce Galaxy</title>
     <style>
       #bg {
+        min-width: 100%;
+        min-height: 100%;
         background: url("data/space1.jpg") no-repeat center center;
         background-size: cover;
       }
+
+      /* fade in transition */
+      body {
+        opacity: 0;
+        transition: opacity 2s ease-in;
+        background: rgb(24, 24, 24);
+      }
+
+      /* Dim background to make UI elements clearer */
+      .content {
+        background: rgba(0, 0, 0, 0.05);
+      }
     </style>
   </head>
-  <body>
+  <body onload="document.body.style.opacity='1'">
     <canvas id="bg"></canvas>
     <main class="content">
       <div class="content-panel">
-
-        <img style="max-height: 20vh; max-width: 100%; height: auto; width: auto;" src="data/sf.png">
+        <img
+          style="max-height: 20vh; max-width: 100%; height: auto; width: auto"
+          src="data/sf.png"
+        />
 
         <h1>Salesforce Galaxy</h1>
 
@@ -82,6 +98,6 @@
         </div>
       </div>
     </main>
-    <script type="module" src="/index.js"></script>
+    <script defer type="module" src="/index.js"></script>
   </body>
 </html>

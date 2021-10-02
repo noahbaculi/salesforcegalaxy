@@ -2,7 +2,7 @@
 
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 
-// 
+//
 // Setup
 
 const scene = new THREE.Scene();
@@ -27,7 +27,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// 
+//
 // Lighting
 
 const mainColor = 0x1e0329;
@@ -50,7 +50,7 @@ let blueLight = new THREE.PointLight(0x3677ac, 40, 500, 2);
 blueLight.position.set(300, 300, 200);
 scene.add(blueLight);
 
-// 
+//
 // Cloud texture
 
 let cloudParticles = [];
@@ -141,7 +141,7 @@ function animate() {
 
 animate();
 
-// 
+//
 // Rsponsive Window Resizing
 
 window.addEventListener("resize", onWindowResize, false);
