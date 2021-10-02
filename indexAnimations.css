@@ -1,10 +1,41 @@
-:root {
-  --base-duration: 2s;
-  --overall-delay: 0s;
-  --between-delay: 0.2s;
+/* Card hover animation */
+
+.card:hover {
+  background: rgb(255, 255, 255, 0.5);
 }
 
-/* Hide scrollbars during animation */
+h1.card {
+  background: rgb(255, 255, 255, 0);
+  border: none;
+}
+
+.grid > a:nth-child(-n + 8) {
+  transform: rotateY(3deg);
+}
+
+.grid > a:nth-child(n + 16) {
+  transform: rotateY(-3deg);
+}
+
+.grid > a:nth-child(-n + 8) > .card:hover {
+  transform: scale(1.04) translateX(10px);
+}
+
+.grid > a:nth-child(n + 16) > .card:hover {
+  transform: scale(1.04) translateX(-10px);
+}
+
+
+/* Salesforce logo hover animation */
+
+.sfdclogo {
+  transition: 0.1s;
+}
+.sfdclogo:hover {
+  opacity: 0.8;
+}
+
+/* Hide scrollbars during loading animation */
 
 @-webkit-keyframes showScrollbars {
   99% {
@@ -34,7 +65,13 @@ body {
   animation: showScrollbars var(--duration) ease 0s forwards;
 }
 
-/* Animate cards */
+/* Card loading animation */
+
+:root {
+  --base-duration: 2s;
+  --overall-delay: 0s;
+  --between-delay: 0.2s;
+}
 
 @-webkit-keyframes appear {
   0% {
