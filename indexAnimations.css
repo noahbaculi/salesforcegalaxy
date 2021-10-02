@@ -1,0 +1,196 @@
+:root {
+  --base-duration: 2s;
+  --overall-delay: 0s;
+  --between-delay: 0.2s;
+}
+
+/* Hide scrollbars during animation */
+
+@-webkit-keyframes showScrollbars {
+  99% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: auto;
+  }
+}
+@keyframes showScrollbars {
+  99% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: auto;
+  }
+}
+
+body {
+  overflow: hidden;
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 14 * var(--between-delay)
+  );
+  -webkit-animation: showScrollbars var(--duration) ease 0s forwards;
+  -moz-animation: showScrollbars var(--duration) ease 0s forwards;
+  -ms-animation: showScrollbars var(--duration) ease 0s forwards;
+  animation: showScrollbars var(--duration) ease 0s forwards;
+}
+
+/* Animate cards */
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(80vh);
+  }
+  20% {
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(80vh);
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+.grid > a:nth-child(2) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 0 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(3) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 1 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(4) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 2 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(5) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 3 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(6) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 4 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(7) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 5 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(8) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 6 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(18) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 0 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(19) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 1 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(20) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 2 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(21) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 3 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(22) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 4 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(23) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 5 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}
+
+.grid > a:nth-child(24) {
+  --duration: calc(
+    var(--base-duration) + var(--overall-delay) + 6 * var(--between-delay)
+  );
+  -webkit-animation: appear var(--duration) ease 0s forwards;
+  -moz-animation: appear var(--duration) ease 0s forwards;
+  -ms-animation: appear var(--duration) ease 0s forwards;
+  animation: appear var(--duration) ease 0s forwards;
+}

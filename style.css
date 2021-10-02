@@ -113,7 +113,7 @@ h1.card {
   transform: rotateY(3deg);
 }
 
-.grid > a:nth-child(n + 9) {
+.grid > a:nth-child(n + 16) {
   transform: rotateY(-3deg);
 }
 
@@ -122,7 +122,7 @@ h1.card {
   transform: scale(1.04) translateX(10px);
 }
 
-.grid > a:nth-child(n + 9) > .card:hover {
+.grid > a:nth-child(n + 16) > .card:hover {
   transition: all 250ms ease;
   transform: scale(1.04) translateX(-10px);
 }
