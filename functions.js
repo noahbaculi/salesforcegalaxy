@@ -76,18 +76,23 @@ export function generateLesson(lessonData) {
   window.addEventListener("mousemove", onMouseMove, false);
 
   function onMouseDown(event) {
-    const intersection = calcIntersection(event);
+    switch (event.which) {
+      case 1:
+        // Left Mouse button pressed
 
-    // only process if there is an intersection and the intersection object has a
-    // url in the userData attribute
-    if (
-      typeof intersection !== "undefined" &&
-      typeof intersection.object.userData.length !== "undefined"
-    ) {
-      lastMouseDownTime = event.timeStamp;
+        const intersection = calcIntersection(event);
+
+        // only process if there is an intersection and the intersection object has a
+        // url in the userData attribute
+        if (
+          typeof intersection !== "undefined" &&
+          typeof intersection.object.userData.length !== "undefined"
+        ) {
+          lastMouseDownTime = event.timeStamp;
+        }
+
+        isMouseDown = true;
     }
-
-    isMouseDown = true;
   }
 
   window.addEventListener("mousedown", onMouseDown, false);
