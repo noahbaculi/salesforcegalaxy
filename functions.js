@@ -1,7 +1,7 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls";
 
-export function createLessonPage() {
+export function generateLesson(lessonData) {
   //
   // Setup
 
@@ -127,8 +127,9 @@ export function createLessonPage() {
 
   //
   // Background
+  // TODO test colored backgrounds with no image
 
-  const backgroundTexture = new THREE.TextureLoader().load("data/grey.jpg");
+  const backgroundTexture = new THREE.TextureLoader().load("/data/grey.jpg");
   scene.background = backgroundTexture;
 
   //
@@ -145,10 +146,60 @@ export function createLessonPage() {
   //
   // Pages
 
+  // Define the angles for the boxes for each number of boxes
+  const allBoxAngles = new Map([
+    [1, [0]],
+    [2, [25, -25]],
+    [3, [25, 0, -25]],
+    [4, [50, 25, -25, -50]],
+    [5, [50, 25, 0, -25, -50]],
+  ]);
+
+  // Define the positions for the boxes for each number of boxes
+  const allBoxPositions = new Map([
+    [1, [[50, 0, 0]]],
+    [
+      2,
+      [
+        [32, 0, -80],
+        [32, 0, 80],
+      ],
+    ],
+    [
+      3,
+      [
+        [32, 0, -80],
+        [50, 0, 0],
+        [32, 0, 80],
+      ],
+    ],
+    [
+      4,
+      [
+        [-19, 0, -145],
+        [32, 0, -80],
+        [32, 0, 80],
+        [-19, 0, 145],
+      ],
+    ],
+    [
+      5,
+      [
+        [-19, 0, -145],
+        [32, 0, -80],
+        [50, 0, 0],
+        [32, 0, 80],
+        [-19, 0, 145],
+      ],
+    ],
+  ]);
+
   const boxGeo = new THREE.BoxGeometry(1, 115, 80);
 
   function creatPageMaterials(frontImage, sfBack = true) {
-    const sidesTexture = new THREE.TextureLoader().load("data/pages/sides.jpg");
+    const sidesTexture = new THREE.TextureLoader().load(
+      "/data/pages/sides.jpg"
+    );
     const sidesMaterial = new THREE.MeshBasicMaterial({ map: sidesTexture });
     sidesMaterial.transparent = true;
 
@@ -159,7 +210,7 @@ export function createLessonPage() {
     let backTexture, backMaterial;
     if (sfBack) {
       // if the page materials should include a back with the Salesforce logo
-      backTexture = new THREE.TextureLoader().load("data/pages/back.png");
+      backTexture = new THREE.TextureLoader().load("/data/pages/back.png");
       backMaterial = new THREE.MeshBasicMaterial({ map: backTexture });
     } else {
       backMaterial = sidesMaterial;
@@ -180,54 +231,31 @@ export function createLessonPage() {
   // Page box geometries
 
   const degToRad = 0.0174533; // degrees to radians conversion factor
+  let allHoverableObjects = [];
 
-  const box1 = new THREE.Mesh(
-    boxGeo,
-    creatPageMaterials("data/automations/validation_rules.png")
-  );
-  box1.position.set(-19, 0, -145);
-  box1.rotation.set(0, 50 * degToRad, 0);
-  box1.userData =
-    "https://help.salesforce.com/s/articleView?id=sf.fields_about_field_validation";
-  scene.add(box1);
+  function createPage(frontImage, linkURL, position, angle) {
+    const box = new THREE.Mesh(boxGeo, creatPageMaterials(frontImage));
+    box.position.set(...position);
+    box.rotation.set(0, angle * degToRad, 0);
+    box.userData = linkURL;
+    scene.add(box);
+    allHoverableObjects.push(box);
+  }
 
-  const box2 = new THREE.Mesh(
-    boxGeo,
-    creatPageMaterials("data/automations/approvals.png")
-  );
-  box2.position.set(32, 0, -80);
-  box2.rotation.set(0, 25 * degToRad, 0);
-  box2.userData =
-    "https://help.salesforce.com/s/articleView?id=sf.what_are_approvals";
-  scene.add(box2);
+  const boxAngles = allBoxAngles.get(lessonData.size);
+  const boxPositions = allBoxPositions.get(lessonData.size);
 
-  const box3 = new THREE.Mesh(
-    boxGeo,
-    creatPageMaterials("data/automations/workflows.png")
-  );
-  box3.position.set(50, 0, 0);
-  box3.userData =
-    "https://help.salesforce.com/s/articleView?id=sf.customize_wf";
-  scene.add(box3);
+  let index = 0;
+  lessonData.forEach((url, image) => {
+    const box = new THREE.Mesh(boxGeo, creatPageMaterials(image));
+    box.position.set(...boxPositions[index]);
+    box.rotation.set(0, boxAngles[index] * degToRad, 0);
+    box.userData = url;
+    scene.add(box);
+    allHoverableObjects.push(box);
 
-  const box4 = new THREE.Mesh(
-    boxGeo,
-    creatPageMaterials("data/automations/processes.png")
-  );
-  box4.position.set(32, 0, 80);
-  box4.rotation.set(0, -25 * degToRad, 0);
-  box4.userData =
-    "https://help.salesforce.com/s/articleView?id=sf.process_overview";
-  scene.add(box4);
-
-  const box5 = new THREE.Mesh(
-    boxGeo,
-    creatPageMaterials("data/automations/flows.png")
-  );
-  box5.position.set(-19, 0, 145);
-  box5.rotation.set(0, -50 * degToRad, 0);
-  box5.userData = "https://help.salesforce.com/s/articleView?id=sf.flow";
-  scene.add(box5);
+    index += 1;
+  });
 
   //
   // Credit board
@@ -236,14 +264,14 @@ export function createLessonPage() {
   const creditBoxMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const creditBox = new THREE.Mesh(
     creditBoxGeo,
-    creatPageMaterials("data/credit.png", false)
+    creatPageMaterials("/data/credit.png", false)
   );
   creditBox.position.set(50, 180, 0);
   creditBox.rotation.set(0, 0, 50 * degToRad);
   creditBox.userData = "https://noahbaculi.com";
   scene.add(creditBox);
 
-  let allHoverableObjects = [box1, box2, box3, box4, box5, creditBox];
+  allHoverableObjects.push(creditBox);
 
   //
   // Stars
