@@ -1,6 +1,6 @@
 // Noah Baculi 2021
 
-import { generateLesson } from "/functions";
+import { generateLesson } from "/functions.js";
 
 // Map of lesson page data
 
