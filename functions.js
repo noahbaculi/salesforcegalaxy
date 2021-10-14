@@ -158,6 +158,7 @@ export function generateLesson(lessonData) {
     [3, [25, 0, -25]],
     [4, [50, 25, -25, -50]],
     [5, [50, 25, 0, -25, -50]],
+    [6, [60, 40, 20, -20, -40, -60]],
   ]);
 
   // Define the positions for the boxes for each number of boxes
@@ -195,6 +196,17 @@ export function generateLesson(lessonData) {
         [50, 0, 0],
         [32, 0, 80],
         [-19, 0, 145],
+      ],
+    ],
+    [
+      6,
+      [
+        [-50, 0, -200],
+        [-19, 0, -145],
+        [32, 0, -80],
+        [32, 0, 80],
+        [-19, 0, 145],
+        [-50, 0, 200],
       ],
     ],
   ]);
