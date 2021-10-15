@@ -13,8 +13,6 @@ export function generateLesson(lessonData) {
     0.1,
     1500
   );
-  camera.position.setX(-300);
-  camera.position.setY(100);
 
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector("#bg"),
@@ -26,6 +24,47 @@ export function generateLesson(lessonData) {
 
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
+
+  //
+  // Controls
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+
+  switch (lessonData.size) {
+    case 2:
+      camera.position.setX(-200);
+      camera.position.setY(10);
+      controls.maxDistance = 400;
+      break;
+
+    case 3:
+      camera.position.setX(-240);
+      camera.position.setY(50);
+      controls.maxDistance = 400;
+      break;
+
+    case 4:
+      camera.position.setX(-280);
+      camera.position.setY(80);
+      controls.maxDistance = 400;
+      break;
+
+    case 5:
+      camera.position.setX(-320);
+      camera.position.setY(80);
+      controls.maxDistance = 500;
+
+    case 6:
+      camera.position.setX(-400);
+      camera.position.setY(100);
+      controls.maxDistance = 600;
+      break;
+
+    default:
+      camera.position.setX(-350);
+      camera.position.setY(100);
+      controls.maxDistance = 500;
+  }
 
   //
   // Mouse interaction
@@ -125,12 +164,6 @@ export function generateLesson(lessonData) {
   window.addEventListener("mouseup", onMouseUp, false);
 
   //
-  // Controls
-
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.maxDistance = 400;
-
-  //
   // Background
   // TODO test colored backgrounds with no image
 
@@ -158,7 +191,7 @@ export function generateLesson(lessonData) {
     [3, [25, 0, -25]],
     [4, [30, 15, -15, -30]],
     [5, [50, 25, 0, -25, -50]],
-    [6, [60, 40, 20, -20, -40, -60]],
+    [6, [45, 30, 15, -15, -30, -45]],
   ]);
 
   // Define the positions for the boxes for each number of boxes
@@ -201,12 +234,12 @@ export function generateLesson(lessonData) {
     [
       6,
       [
-        [-50, 0, -200],
-        [-19, 0, -145],
-        [32, 0, -80],
-        [32, 0, 80],
-        [-19, 0, 145],
-        [-50, 0, 200],
+        [-51, 0, -186],
+        [0, 0, -119],
+        [32, 0, -41],
+        [32, 0, 41],
+        [0, 0, 119],
+        [-51, 0, 186],
       ],
     ],
   ]);
