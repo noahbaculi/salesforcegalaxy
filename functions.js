@@ -154,9 +154,9 @@ export function generateLesson(lessonData) {
   // Define the angles for the boxes for each number of boxes
   const allBoxAngles = new Map([
     [1, [0]],
-    [2, [25, -25]],
+    [2, [12, -12]],
     [3, [25, 0, -25]],
-    [4, [50, 25, -25, -50]],
+    [4, [30, 15, -15, -30]],
     [5, [50, 25, 0, -25, -50]],
     [6, [60, 40, 20, -20, -40, -60]],
   ]);
@@ -167,8 +167,8 @@ export function generateLesson(lessonData) {
     [
       2,
       [
-        [32, 0, -80],
-        [32, 0, 80],
+        [32, 0, -41],
+        [32, 0, 41],
       ],
     ],
     [
@@ -182,10 +182,10 @@ export function generateLesson(lessonData) {
     [
       4,
       [
-        [-19, 0, -145],
-        [32, 0, -80],
-        [32, 0, 80],
-        [-19, 0, 145],
+        [0, 0, -119],
+        [32, 0, -41],
+        [32, 0, 41],
+        [0, 0, 119],
       ],
     ],
     [
