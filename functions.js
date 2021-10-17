@@ -67,7 +67,9 @@ export function generateLesson(
   modalContentDiv.appendChild(modalClose);
 
   const modalText = document.createElement("p");
-  const node = document.createTextNode("This is a new paragraph.");
+  const node = document.createTextNode(
+    "How to navigate a Salesforce Galaxy lesson:"
+  );
   modalText.appendChild(node);
   modalContentDiv.appendChild(modalText);
 
@@ -95,6 +97,11 @@ export function generateLesson(
   controls.touches = {
     ONE: THREE.TOUCH.PAN,
     TWO: THREE.TOUCH.DOLLY_ROTATE,
+  };
+  controls.mouseButtons = {
+    LEFT: THREE.MOUSE.PAN,
+    MIDDLE: THREE.MOUSE.DOLLY,
+    RIGHT: THREE.MOUSE.ROTATE,
   };
 
   switch (lessonData.size) {
