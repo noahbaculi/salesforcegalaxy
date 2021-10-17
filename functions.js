@@ -29,6 +29,10 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   // Controls
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.touches = {
+    ONE: THREE.TOUCH.PAN,
+    TWO: THREE.TOUCH.DOLLY_ROTATE
+  }
 
   switch (lessonData.size) {
     case 2:
