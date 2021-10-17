@@ -1,7 +1,7 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls";
 
-export function generateLesson(lessonData, bgColor=0x404040) {
+export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c) {
   //
   // Setup
 
@@ -313,7 +313,6 @@ export function generateLesson(lessonData, bgColor=0x404040) {
   // Credit board
 
   const creditBoxGeo = new THREE.BoxGeometry(1, 40, 80);
-  const creditBoxMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const creditBox = new THREE.Mesh(
     creditBoxGeo,
     creatPageMaterials("/data/credit.png", false)
@@ -328,10 +327,17 @@ export function generateLesson(lessonData, bgColor=0x404040) {
   //
   // Stars
 
-  function addStar() {
-    const geometry = new THREE.SphereGeometry(0.5, 24, 24);
-    const material = new THREE.MeshStandardMaterial({ color: 0xfaa73c });
-    const star = new THREE.Mesh(geometry, material);
+
+  let starMaterial;
+  try {
+    starMaterial = new THREE.MeshStandardMaterial({ color: starColor });
+  } catch (error) {
+    starMaterial = new THREE.MeshStandardMaterial({ color: 0xfaa73c }); 
+  }
+
+  function addStar(starMaterial) {
+    const starGeometry = new THREE.SphereGeometry(0.5, 24, 24);
+    const star = new THREE.Mesh(starGeometry, starMaterial);
 
     let distance = 0,
       x,
@@ -349,7 +355,7 @@ export function generateLesson(lessonData, bgColor=0x404040) {
     return star;
   }
 
-  const stars = [...Array(3000)].map(() => addStar());
+  const stars = [...Array(3000)].map(() => addStar(starMaterial));
 
   //
   // Animation Loop
