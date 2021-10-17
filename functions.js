@@ -40,14 +40,53 @@ export function generateLesson(
   const homeImg = document.createElement("img");
   homeImg.setAttribute("src", "/data/home.png");
   homeImg.setAttribute("alt", "Home");
-  homeImg.className = "home-icon";
-  document.getElementsByClassName("home-link")[0].appendChild(homeImg);
+  homeImg.classList.add("home-icon");
+  homeLink.appendChild(homeImg);
 
   const helpImg = document.createElement("img");
   helpImg.setAttribute("src", "/data/help.png");
   helpImg.setAttribute("alt", "Help");
-  helpImg.className = "help-icon";
+  helpImg.classList.add("help-icon");
   document.getElementsByTagName("body")[0].appendChild(helpImg);
+
+  //
+  // Help modal
+
+  const modalDiv = document.createElement("div");
+  modalDiv.classList.add("modal");
+  document.getElementsByTagName("body")[0].appendChild(modalDiv);
+
+  const modalContentDiv = document.createElement("div");
+  modalContentDiv.classList.add("modal-content");
+  modalDiv.appendChild(modalContentDiv);
+
+  const modalClose = document.createElement("span");
+  modalClose.classList.add("close-modal");
+  const closeNode = document.createTextNode("✖");
+  modalClose.appendChild(closeNode);
+  modalContentDiv.appendChild(modalClose);
+
+  const modalText = document.createElement("p");
+  const node = document.createTextNode("This is a new paragraph.");
+  modalText.appendChild(node);
+  modalContentDiv.appendChild(modalText);
+
+  // When the user clicks on the button, open the modal
+  helpImg.onclick = function () {
+    modalDiv.style.display = "block";
+  };
+
+  // When the user clicks on <span> (x), close the modal
+  modalClose.onclick = function () {
+    modalDiv.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modalDiv) {
+      modalDiv.style.display = "none";
+    }
+  };
 
   //
   // Controls
@@ -116,6 +155,11 @@ export function generateLesson(
   let isMouseDown = false; // tracks whether the mouse button is down to prevent hover behavior when the camera orbit is being controlled
 
   function onMouseMove(event) {
+    // do not execute if the modal is displayed
+    if (modalDiv.style.display == "block") {
+      return;
+    }
+
     // revert all hoverable objects to the unhovered state
     allHoverableObjects.forEach((hoverableObject) => {
       hoverableObject.material.forEach((element) => {
@@ -143,6 +187,11 @@ export function generateLesson(
   window.addEventListener("mousemove", onMouseMove, false);
 
   function onMouseDown(event) {
+    // do not execute if the modal is displayed
+    if (modalDiv.style.display == "block") {
+      return;
+    }
+
     switch (event.which) {
       case 1:
         // Left Mouse button pressed
@@ -165,6 +214,11 @@ export function generateLesson(
   window.addEventListener("mousedown", onMouseDown, false);
 
   function onMouseUp(event) {
+    // do not execute if the modal is displayed
+    if (modalDiv.style.display == "block") {
+      return;
+    }
+
     const intersection = calcIntersection(event);
 
     // only process if there is an intersection, the intersection object has a
