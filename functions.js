@@ -1,7 +1,11 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls";
 
-export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c) {
+export function generateLesson(
+  lessonData,
+  bgColor = 0x404040,
+  starColor = 0xfaa73c
+) {
   //
   // Setup
 
@@ -26,13 +30,33 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   const mouse = new THREE.Vector2();
 
   //
+  // Home and Help icons
+
+  const homeLink = document.createElement("a");
+  homeLink.setAttribute("href", "/index.html");
+  homeLink.classList.add("home-link");
+  document.getElementsByTagName("body")[0].appendChild(homeLink);
+
+  const homeImg = document.createElement("img");
+  homeImg.setAttribute("src", "/data/home.png");
+  homeImg.setAttribute("alt", "Home");
+  homeImg.className = "home-icon";
+  document.getElementsByClassName("home-link")[0].appendChild(homeImg);
+
+  const helpImg = document.createElement("img");
+  helpImg.setAttribute("src", "/data/help.png");
+  helpImg.setAttribute("alt", "Help");
+  helpImg.className = "help-icon";
+  document.getElementsByTagName("body")[0].appendChild(helpImg);
+
+  //
   // Controls
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.touches = {
     ONE: THREE.TOUCH.PAN,
-    TWO: THREE.TOUCH.DOLLY_ROTATE
-  }
+    TWO: THREE.TOUCH.DOLLY_ROTATE,
+  };
 
   switch (lessonData.size) {
     case 2:
@@ -171,9 +195,9 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   // Background
 
   try {
-    scene.background = new THREE.Color( bgColor );
+    scene.background = new THREE.Color(bgColor);
   } catch (error) {
-    scene.background = new THREE.Color( 0x404040 );
+    scene.background = new THREE.Color(0x404040);
   }
 
   //
@@ -331,12 +355,11 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   //
   // Stars
 
-
   let starMaterial;
   try {
     starMaterial = new THREE.MeshStandardMaterial({ color: starColor });
   } catch (error) {
-    starMaterial = new THREE.MeshStandardMaterial({ color: 0xfaa73c }); 
+    starMaterial = new THREE.MeshStandardMaterial({ color: 0xfaa73c });
   }
 
   function addStar(starMaterial) {
@@ -364,7 +387,7 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   //
   // Animation Loop
 
-  const rotationVector = [...Array(3)].map(() => (Math.random() * (1 - -1) + -1)); // generate a random rotation vector with elements between -1 and 1
+  const rotationVector = [...Array(3)].map(() => Math.random() * (1 - -1) + -1); // generate a random rotation vector with elements between -1 and 1
   const rotationAxis = new THREE.Vector3(...rotationVector);
 
   function animate() {

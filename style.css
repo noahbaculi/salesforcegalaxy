@@ -23,6 +23,29 @@ body {
   overflow: auto;
 }
 
+.home-icon {
+  height: 25px;
+  position: absolute;
+  margin: 10px;
+  transition: 0.1s;
+}
+
+.home-icon:hover {
+  opacity: 0.5;
+}
+
+.help-icon {
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  margin: 10px;
+  transition: 0.1s;
+}
+
+.help-icon:hover {
+  opacity: 0.5;
+}
+
 .content {
   bottom: 0;
   left: 0;
