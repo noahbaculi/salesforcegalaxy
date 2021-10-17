@@ -1,7 +1,7 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls";
 
-export function generateLesson(lessonData) {
+export function generateLesson(lessonData, bgColor=0x404040) {
   //
   // Setup
 
@@ -165,10 +165,12 @@ export function generateLesson(lessonData) {
 
   //
   // Background
-  // TODO test colored backgrounds with no image
 
-  const backgroundTexture = new THREE.TextureLoader().load("/data/grey.jpg");
-  scene.background = backgroundTexture;
+  try {
+    scene.background = new THREE.Color( bgColor );
+  } catch (error) {
+    scene.background = new THREE.Color( 0x404040 );
+  }
 
   //
   // Lights
