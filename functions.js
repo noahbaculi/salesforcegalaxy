@@ -67,15 +67,17 @@ export function generateLesson(
   modalContentDiv.appendChild(modalClose);
 
   const modalText = document.createElement("p");
-  const node = document.createTextNode(
-    "How to navigate a Salesforce Galaxy lesson:"
-  );
-  modalText.appendChild(node);
+  modalText.id = "modal-text";
+  // const node = document.createTextNode(
+  //   "How to navigate a Salesforce Galaxy lesson:"
+  // );
+  // modalText.appendChild(node);
   modalContentDiv.appendChild(modalText);
+  $("#modal-text").load("/lesson-modal.html");
 
   // When the user clicks on the button, open the modal
   helpImg.onclick = function () {
-    modalDiv.style.display = "block";
+    modalDiv.style.display = "flex";
   };
 
   // When the user clicks on <span> (x), close the modal
