@@ -360,14 +360,15 @@ export function generateLesson(lessonData, bgColor=0x404040, starColor=0xfaa73c)
   //
   // Animation Loop
 
-  const rotationAxis = new THREE.Vector3(1, 2, -1);
+  const rotationVector = [...Array(3)].map(() => (Math.random() * (1 - -1) + -1)); // generate a random rotation vector with elements between -1 and 1
+  const rotationAxis = new THREE.Vector3(...rotationVector);
 
   function animate() {
     requestAnimationFrame(animate);
 
     stars.forEach((element) =>
       element instanceof THREE.Mesh
-        ? element.position.applyAxisAngle(rotationAxis, 0.002 * degToRad)
+        ? element.position.applyAxisAngle(rotationAxis, 0.003 * degToRad)
         : element
     );
 
