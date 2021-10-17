@@ -15,4 +15,4 @@ const lessonData = new Map([
   ],
 ]);
 
-generateLesson(lessonData);
+generateLesson(lessonData, 0x301708, 0xc75d12);

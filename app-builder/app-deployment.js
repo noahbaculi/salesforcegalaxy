@@ -23,4 +23,4 @@ const lessonData = new Map([
   ],
 ]);
 
-generateLesson(lessonData);
+generateLesson(lessonData, 0x1B1F3A, 0xA64942);
