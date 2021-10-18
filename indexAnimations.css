@@ -4,9 +4,20 @@
   background: rgb(255, 255, 255, 0.5);
 }
 
+h1 {
+  font-size: clamp(1.4rem, 8vw, 2rem); 
+}
+
 h1.card {
   background: rgb(255, 255, 255, 0);
   border: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: clamp(1rem, 6vw, 1.8rem); 
+}
+
+p.card {
+  font-size: clamp(0.5rem, 3.8vw, 1rem); 
 }
 
 .grid > a:nth-child(-n + 8) {
@@ -24,7 +35,6 @@ h1.card {
 .grid > a:nth-child(n + 16) > .card:hover {
   transform: scale(1.04) translateX(-10px);
 }
-
 
 /* Salesforce logo hover animation */
 

@@ -65,8 +65,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(200px, 300px) minmax(20px, auto) minmax(
-      200px,
+  grid-template-columns: minmax(130px, 300px) minmax(20px, auto) minmax(
+      130px,
       300px
     );
   grid-template-rows: 3fr repeat(7, minmax(20px, 1fr));
@@ -150,7 +150,7 @@ a {
 }
 
 .modal-content p {
-  line-height: 1.5;
+  line-height: clamp(1.1, 1.4, 1.5);
 }
 .modal-content h2 {
   font-size: 1.4em;
@@ -202,7 +202,11 @@ a {
 }
 
 .modal-content img {
-  width: clamp(50px, 90%, 70px);
+  width: clamp(30px, 90%, 70px);
+}
+
+p#modal-text {
+  font-size: clamp(0.5rem, 3.8vw, 1rem);
 }
 
 .home-grid {
@@ -213,7 +217,7 @@ a {
   grid-auto-flow: row;
   text-align: center;
   margin-top: 20px;
-  margin: 20px clamp(10px, 30px, 30px);
+  margin: 20px clamp(10px, 5%, 30px);
 }
 
 .image-left {
