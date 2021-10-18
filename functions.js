@@ -60,7 +60,7 @@ export function generateLesson(
   modalContentDiv.classList.add("modal-content");
   modalDiv.appendChild(modalContentDiv);
 
-  const modalClose = document.createElement("span");
+  const modalClose = document.createElement("p");
   modalClose.classList.add("close-modal");
   const closeNode = document.createTextNode("✖");
   modalClose.appendChild(closeNode);
@@ -165,7 +165,7 @@ export function generateLesson(
 
   function onMouseMove(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display == "block") {
+    if (modalDiv.style.display != "none") {
       return;
     }
 
@@ -197,7 +197,7 @@ export function generateLesson(
 
   function onMouseDown(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display == "block") {
+    if (modalDiv.style.display != "none") {
       return;
     }
 
@@ -224,7 +224,7 @@ export function generateLesson(
 
   function onMouseUp(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display == "block") {
+    if (modalDiv.style.display != "none") {
       return;
     }
 

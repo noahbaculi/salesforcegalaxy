@@ -138,33 +138,15 @@ a {
   background-color: #000000;
   color: white;
   padding: 20px;
-  width: 80%;
+  width: clamp(450px, 80%, 600px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
 
-  --duration: 1s;
+  --duration: 0.5s;
   -webkit-animation: animateModal var(--duration) ease 0s forwards;
   -moz-animation: animateModal var(--duration) ease 0s forwards;
   -ms-animation: animateModal var(--duration) ease 0s forwards;
   animation: animateModal var(--duration) ease 0s forwards;
-}
-
-.lesson-grid {
-  display: grid;
-  grid-template-columns: 8fr 0.5fr 8fr;
-  grid-template-rows: 1fr;
-  gap: 10px 10px;
-  grid-auto-flow: row;
-  justify-items: center;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* .lesson-grid > div {
-  display: grid;
-} */
-
-.lesson-grid > div > img {
-  width: clamp(50px, 50%, 125px);
 }
 
 /* Add Animation */
@@ -184,6 +166,31 @@ a {
   to {
     opacity: 1;
   }
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: 4fr 0.5fr 8fr 0.5fr 8fr;
+  grid-template-rows: 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-content h2 {
+  font-size: 1.4em;
+}
+
+.lesson-grid > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lesson-grid > div > img {
+  width: clamp(50px, 50%, 90px);
 }
 
 /* The Close Button */
