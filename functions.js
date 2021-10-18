@@ -68,10 +68,6 @@ export function generateLesson(
 
   const modalText = document.createElement("p");
   modalText.id = "modal-text";
-  // const node = document.createTextNode(
-  //   "How to navigate a Salesforce Galaxy lesson:"
-  // );
-  // modalText.appendChild(node);
   modalContentDiv.appendChild(modalText);
   $("#modal-text").load("/lesson-modal.html");
 

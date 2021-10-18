@@ -28,6 +28,51 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 //
+// Info modal
+
+const infoImg = document.createElement("img");
+infoImg.setAttribute("src", "/data/info.png");
+infoImg.setAttribute("alt", "Info");
+infoImg.classList.add("help-icon");
+document.getElementsByTagName("body")[0].appendChild(infoImg);
+
+const modalDiv = document.createElement("div");
+modalDiv.classList.add("modal");
+document.getElementsByTagName("body")[0].appendChild(modalDiv);
+
+const modalContentDiv = document.createElement("div");
+modalContentDiv.classList.add("modal-content");
+modalDiv.appendChild(modalContentDiv);
+
+const modalClose = document.createElement("p");
+modalClose.classList.add("close-modal");
+const closeNode = document.createTextNode("✖");
+modalClose.appendChild(closeNode);
+modalContentDiv.appendChild(modalClose);
+
+const modalText = document.createElement("p");
+modalText.id = "modal-text";
+modalContentDiv.appendChild(modalText);
+$("#modal-text").load("/home-modal.html");
+
+// When the user clicks on the button, open the modal
+infoImg.onclick = function () {
+  modalDiv.style.display = "flex";
+};
+
+// When the user clicks on <span> (x), close the modal
+modalClose.onclick = function () {
+  modalDiv.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modalDiv) {
+    modalDiv.style.display = "none";
+  }
+};
+
+//
 // Lighting
 
 const mainColor = 0x1e0329;
