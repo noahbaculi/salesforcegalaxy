@@ -138,7 +138,7 @@ a {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 20px;
-  width: clamp(350px, 80%, 600px);
+  width: clamp(300px, 80%, 600px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 
