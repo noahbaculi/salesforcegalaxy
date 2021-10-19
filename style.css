@@ -21,6 +21,10 @@ body {
   margin: 0;
   /* overflow: hidden; Hide scrollbars */
   overflow: auto;
+
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  background: rgb(24, 24, 24);
 }
 
 .home-icon {
@@ -133,6 +137,33 @@ a {
   align-items: center;
 }
 
+/* Add Animation */
+@-webkit-keyframes animateModal {
+  0% {
+    -webkit-transform: translateY(-50vh) translateX(50vw) scale(0);
+    transform: translateY(-50vh) translateX(50vw) scale(0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0) scale(1);
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes animateModal {
+  0% {
+    -webkit-transform: translateY(-50vh) translateX(50vw) scale(0);
+    transform: translateY(-50vh) translateX(50vw) scale(0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0) scale(1);
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
 /* Modal Content/Box */
 .modal-content {
   background-color: rgba(0, 0, 0, 0.9);
@@ -163,29 +194,6 @@ a {
 .modal-content a:hover,
 .modal-content a:focus {
   opacity: 0.5;
-}
-
-/* Add Animation */
-@-webkit-keyframes animateModal {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes animateModal {
-  0% {
-    -webkit-transform: translateY(-50vh) translateX(50vw) scale(0);
-    transform: translateY(-50vh) translateX(50vw) scale(0);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) translateX(0) scale(1);
-    transform: translateY(0) translateX(0) scale(1);
-    opacity: 1;
-  }
 }
 
 .lesson-grid {

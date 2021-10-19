@@ -30,6 +30,11 @@ export function generateLesson(
   const mouse = new THREE.Vector2();
 
   //
+  // Add body on-load opacity cue for CSS animation
+  const DOMbody = document.body;
+  DOMbody.setAttribute("onload", "document.body.style.opacity='1'");
+
+  //
   // Home and Help icons
 
   const homeLink = document.createElement("a");
