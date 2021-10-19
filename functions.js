@@ -173,7 +173,7 @@ export function generateLesson(
 
   function onMouseMove(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display != "none") {
+    if (modalDiv.style.display == "flex") {
       return;
     }
 
@@ -205,7 +205,7 @@ export function generateLesson(
 
   function onMouseDown(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display != "none") {
+    if (modalDiv.style.display == "flex") {
       return;
     }
 
@@ -232,15 +232,15 @@ export function generateLesson(
 
   function onMouseUp(event) {
     // do not execute if the modal is displayed
-    if (modalDiv.style.display != "none") {
+    if (modalDiv.style.display == "flex") {
       return;
     }
 
     const intersection = calcIntersection(event);
 
     // only process if there is an intersection, the intersection object has a
-    // url in the userData attribute, and the last MouseDown event ocurred withinsome temporal
-    // threshold
+    // url in the userData attribute, and the last MouseDown event ocurred
+    // within some temporal threshold
     const timeSinceMouseDown = event.timeStamp - lastMouseDownTime;
     if (
       typeof intersection !== "undefined" &&
