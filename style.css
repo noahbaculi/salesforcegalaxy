@@ -245,7 +245,7 @@ p#modal-text {
 
 /* The Close Button */
 .close-modal {
-  color: #aaa;
+  color: white;
   float: right;
   font-size: 20px;
   /* font-weight: bold; */
@@ -253,7 +253,7 @@ p#modal-text {
 
 .close-modal:hover,
 .close-modal:focus {
-  color: black;
+  opacity: 0.8;
   text-decoration: none;
   cursor: pointer;
 }

@@ -71,6 +71,11 @@ export function generateLesson(
   modalContentDiv.appendChild(modalText);
   $("#modal-text").load("/lesson-modal.html");
 
+  // Show lesson help modal if it has not been viewed before
+  if (!localStorage.getItem("lessonHelpPreviouslyViewed")) {
+    modalDiv.style.display = "flex";
+  }
+
   // When the user clicks on the button, open the modal
   helpImg.onclick = function () {
     modalDiv.style.display = "flex";
@@ -78,12 +83,14 @@ export function generateLesson(
 
   // When the user clicks on <span> (x), close the modal
   modalClose.onclick = function () {
+    localStorage.setItem("lessonHelpPreviouslyViewed", true);
     modalDiv.style.display = "none";
   };
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalDiv) {
+      localStorage.setItem("lessonHelpPreviouslyViewed", true);
       modalDiv.style.display = "none";
     }
   };
