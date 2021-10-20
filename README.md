@@ -51,7 +51,9 @@
 ## About The Project
 <br>
 <p align="center">
-<img src="data/readme/screenshot.gif" />
+  <a href="https://www.salesforcegalaxy.com/">
+    <img src="data/readme/screenshot.gif" />
+  </a>
 </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
