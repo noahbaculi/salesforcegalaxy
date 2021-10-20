@@ -74,6 +74,8 @@
   [<img align="left" alt="Three JS" height="20px"
   src="data/readme/three_js.svg" style="padding-right:10px"/>][three-js-url] [Three
   JS][three-js-url]
+
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/541bfad2-ba5f-4ec2-9c1c-0a9cb6299d6c/deploy-status)](https://app.netlify.com/sites/salesforcegalaxy/deploys)
   
 </div>
 
